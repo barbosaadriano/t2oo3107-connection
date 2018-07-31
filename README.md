@@ -21,6 +21,8 @@ O Objetivo de uma conexão com banco de dados é realizar a persistêcia, a mani
 - Faça a implementação de todos os métodos exigidos pela interface.
 - Crie uma classe com método main para possibilitar a execução do Crud, esta classe deve instanciar um objeto da classe criada anteriormente e executar a chamada de todos os métodos implementados.
 # Importante
+- A pasta onde estão os códigos do projeto é src/
+- Antes de começar programar, crie um pacote para você ex.: br.com.fulano
 - Faça um fork deste repositório
 - Faça um clone do seu repositório forkeado
 - Faça as implementações e testes necessários
