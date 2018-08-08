@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package br.com.LunaIzahR;
+
+package br.com.foo;
 
 import br.com.adrianob.CrudInterface;
 import java.sql.Connection;
@@ -15,30 +11,29 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author izahR
+ * @author drink
  */
-public class Classcrud implements CrudInterface {
+public class Bar implements CrudInterface{
 
-    private Connection conn; 
+    private Connection conn;
 
-    public Classcrud(Connection conn) {
+    public Bar(Connection conn) {
         this.conn = conn;
     }
-    
-    
+
     @Override
     public void retriveAll() {
         try {
             PreparedStatement ps = this.conn.prepareStatement("select * from pessoa");
-            ResultSet res = ps.executeQuery(); 
+            ResultSet res = ps.executeQuery();
             
             while (res.next()) {
-                String nome = res.getString("nome"); 
+                String nome = res.getString("nome");
                 System.out.println(nome);
             }
             
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println(ex.getMessage()); 
         }
     }
 
