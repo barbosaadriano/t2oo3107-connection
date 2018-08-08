@@ -6,8 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -26,12 +24,10 @@ public class Bar implements CrudInterface{
         try {
             PreparedStatement ps = this.conn.prepareStatement("select * from pessoa");
             ResultSet res = ps.executeQuery();
-            
             while (res.next()) {
                 String nome = res.getString("nome");
                 System.out.println(nome);
             }
-            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage()); 
         }
