@@ -9,6 +9,7 @@ import br.com.adrianob.CrudInterface;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,24 +20,23 @@ import java.util.logging.Logger;
  */
 public class Classcrud implements CrudInterface {
 
-    private Connection conn; 
+    private Connection conn;
 
     public Classcrud(Connection conn) {
         this.conn = conn;
     }
-    
-    
+
     @Override
     public void retriveAll() {
         try {
             PreparedStatement ps = this.conn.prepareStatement("select * from pessoa");
-            ResultSet res = ps.executeQuery(); 
-            
+            ResultSet res = ps.executeQuery();
+
             while (res.next()) {
-                String nome = res.getString("nome"); 
+                String nome = res.getString("nome");
                 System.out.println(nome);
             }
-            
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -44,17 +44,32 @@ public class Classcrud implements CrudInterface {
 
     @Override
     public void insert() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement ps = this.conn.prepareStatement("insert into pessoa(nome) values('ananda')");
+            ps.executeUpdate(); 
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement ps = this.conn.prepareStatement("update pessoa set nome = 'flavia' where nome = 'ananda'");
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Override
     public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement ps = this.conn.prepareStatement("delete from pessoa where nome = 'zé'");
+            ps.executeUpdate(); 
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
-    
+
 }
