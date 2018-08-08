@@ -17,7 +17,6 @@ public class Crudao implements CrudInterface{
     }
     
     
-    
     @Override
     public void retriveAll() {
         try {
@@ -36,17 +35,38 @@ public class Crudao implements CrudInterface{
 
     @Override
     public void insert() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            PreparedStatement ps=this.conn.prepareStatement("insert into pessoa (nome) values (?)");
+            ps.setString(1, "PO");
+            ps.executeUpdate();
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+    
     }
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            PreparedStatement ps = this.conn.prepareStatement("update pessoa set nome = ? where nome = ? ");
+            ps.setString(1, "ABC");
+            ps.setString(2, "Fulano");
+            ps.executeUpdate();
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Override
     public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement ps = this.conn.prepareStatement("delete from pessoa where nome = ?");
+            ps.setString(1, "ABC");
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        
     }
     
 }
