@@ -34,6 +34,10 @@ public class Sample {
                     );
             CrudInterface crud = new iCRUD(conn);
             crud.retriveAll();
+            crud.insert();
+            crud.update();
+            crud.delete();
+            crud.retriveAll();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
