@@ -39,17 +39,39 @@ public class Principal implements CrudInterface {
 
     @Override
     public void insert() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        try {
+            PreparedStatement ps = this.conn.prepareStatement("insert into Pessoa (nome) values (?)"); 
+            ps.setString(1, "PEDRO H");
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }  
     }
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement ps = this.conn.prepareStatement("update Pessoa set nome = ? where id = ?");
+            ps.setString(1, "PEDRO E");
+            ps.setInt(2, 8);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Override
     public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        try {
+            PreparedStatement ps = this.conn.prepareStatement("delete from Pessoa where id = ?");
+            ps.setInt(1, 8);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
     }
 
 }
