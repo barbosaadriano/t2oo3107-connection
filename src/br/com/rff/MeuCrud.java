@@ -45,17 +45,39 @@ public class MeuCrud implements CrudInterface {
 
     @Override
     public void insert() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         try {
+            for (int i = 1; i < 6; i++) {
+                PreparedStatement ps = conn.prepareStatement("insert into pessoa(nome) values('Renato" + i + "');");
+                ps.executeUpdate();
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MeuCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement ps;
+        try {
+            ps = conn.prepareStatement("update pessoa set nome ='Paula' Where nome  = 'Renato1' ;");
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(MeuCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     @Override
     public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       PreparedStatement ps;
+        try {
+            ps = conn.prepareStatement("delete from pessoa where id = 5;");
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(MeuCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
     
-}
+

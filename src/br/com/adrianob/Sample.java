@@ -5,6 +5,12 @@
  */
 package br.com.adrianob;
 
+import br.com.foo.Bar;
+import br.com.rff.MeuCrud;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
+
 /**
  *
  * @author drink
@@ -15,7 +21,26 @@ public class Sample {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        Properties config = new Properties();
+        config.put("user", "root");
+        config.put("password", "");
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn
+                    = DriverManager.getConnection(
+                            "jdbc:mysql://localhost:3306/singleton",
+                            config
+                    );
+            CrudInterface crud = new MeuCrud(conn);
+            crud.retriveAll();
+            crud.insert();
+            crud.update();
+            crud.delete();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
-    
+
 }
