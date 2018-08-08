@@ -33,7 +33,7 @@ public class CrudMeu implements CrudInterface{
             
             while (res.next()) {
                 String nome = res.getString("nome"); //retorna o valor da linha nome no BD
-                String.out.println(nome);
+                System.out.println(nome);
             }
             
         } catch (SQLException ex) {
@@ -43,17 +43,34 @@ public class CrudMeu implements CrudInterface{
 
     @Override
     public void insert() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          try {
+            PreparedStatement ps = this.conn.prepareStatement("insert into pessoa(nome) values('erica') ");
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement ps = this.conn.prepareStatement("update pessoa set nome = 'Borges' where nome = 'erica'");
+            ps.executeUpdate();
+        }
+        catch (SQLException ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Override
     public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         try {
+            PreparedStatement ps = this.conn.prepareStatement("delete from pessoa where nome = 'Eu' ");
+            ps.executeUpdate();
+         }
+        catch (SQLException ex){
+            System.out.println(ex.getMessage());
+        }
     }
     
     
