@@ -24,7 +24,7 @@ public class Sample {
 
         Properties config = new Properties();
         config.put("user", "root");
-        config.put("password", "");
+        config.put("password", "root");
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn
