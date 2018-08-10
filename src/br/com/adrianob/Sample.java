@@ -6,7 +6,8 @@
 package br.com.adrianob;
 
 import br.com.foo.Bar;
-import br.com.rff.MeuCrud;
+import br.com.pedroenju.Principal;
+import br.com.thiagohc.MeuCrud;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
@@ -24,7 +25,7 @@ public class Sample {
 
         Properties config = new Properties();
         config.put("user", "root");
-        config.put("password", "");
+        config.put("password", "root");
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn
@@ -32,11 +33,13 @@ public class Sample {
                             "jdbc:mysql://localhost:3306/singleton",
                             config
                     );
+            CrudInterface crud = new Principal(conn);
             CrudInterface crud = new MeuCrud(conn);
-            crud.retriveAll();
             crud.insert();
             crud.update();
             crud.delete();
+            crud.retriveAll();
+            
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
