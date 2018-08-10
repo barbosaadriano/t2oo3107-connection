@@ -6,6 +6,8 @@
  */
 package br.com.adrianob;
 
+
+import br.com.LunaIzahR.Classcrud;
 import br.com.Borges.CrudMeu;
 import br.com.alissonhs.MyCrud;
 import br.com.foo.Bar;
@@ -33,14 +35,15 @@ public class Sample {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn
                     = DriverManager.getConnection(
-                            "jdbc:mysql://localhost:3306/singleton",
+                            "jdbc:mysql://localhost:3306/singletton",
                             config
                     );
             CrudInterface crud = new MyCrud(conn);
+            crud.retriveAll();
             crud.insert();
             crud.update();
             crud.delete();
-            crud.retriveAll();
+           
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
