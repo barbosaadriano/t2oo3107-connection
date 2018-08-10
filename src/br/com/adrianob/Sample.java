@@ -6,6 +6,7 @@
 package br.com.adrianob;
 
 import br.com.foo.Bar;
+import br.com.pedroenju.Principal;
 import br.com.thiagohc.MeuCrud;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -32,11 +33,13 @@ public class Sample {
                             "jdbc:mysql://localhost:3306/singleton",
                             config
                     );
+            CrudInterface crud = new Principal(conn);
             CrudInterface crud = new MeuCrud(conn);
             crud.insert();
             crud.update();
             crud.delete();
             crud.retriveAll();
+            
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
