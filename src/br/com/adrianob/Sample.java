@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,8 +6,10 @@
  */
 package br.com.adrianob;
 
+import br.com.alissonhs.MyCrud;
 import br.com.foo.Bar;
 import br.com.marlenis.Crud;
+import br.com.lucasj.iCRUD;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
@@ -24,7 +27,7 @@ public class Sample {
 
         Properties config = new Properties();
         config.put("user", "root");
-        config.put("password", "");
+        config.put("password", "root");
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn
@@ -32,8 +35,8 @@ public class Sample {
                             "jdbc:mysql://localhost:3306/singleton",
                             config
                     );
-            CrudInterface crud = new Crud(conn);
-            crud.retriveAll();
+            CrudInterface crud = new MyCrud(conn);
+
             crud.insert();
             crud.update();
             crud.delete();
