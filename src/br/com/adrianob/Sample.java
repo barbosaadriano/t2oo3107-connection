@@ -33,17 +33,18 @@ public class Sample {
                             "jdbc:mysql://localhost:3306/singleton",
                             config
                     );
-            CrudInterface crud = new Principal(conn);
             CrudInterface crud = new MeuCrud(conn);
+            crud.retriveAll();
             crud.insert();
+            crud.retriveAll();
             crud.update();
+            crud.retriveAll();
             crud.delete();
             crud.retriveAll();
-            
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
     }
-
 }
+
