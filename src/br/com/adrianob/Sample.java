@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,13 +5,8 @@
  */
 package br.com.adrianob;
 
-
-import br.com.LunaIzahR.Classcrud;
-import br.com.Borges.CrudMeu;
-import br.com.alissonhs.MyCrud;
 import br.com.foo.Bar;
-import br.com.marlenis.Crud;
-import br.com.lucasj.iCRUD;
+import br.com.nicolasg.Crudao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
@@ -35,15 +29,12 @@ public class Sample {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn
                     = DriverManager.getConnection(
-                            "jdbc:mysql://localhost:3306/singletton",
-                            config
-                    );
-            CrudInterface crud = new MyCrud(conn);
+                            "jdbc:mysql://localhost:3306/singleton",config);
+            CrudInterface crud = new Crudao(conn);
             crud.retriveAll();
             crud.insert();
-            crud.update();
             crud.delete();
-           
+            crud.update();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
