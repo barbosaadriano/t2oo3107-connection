@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,9 +6,8 @@
  */
 package br.com.adrianob;
 
+import br.com.alissonhs.MyCrud;
 import br.com.foo.Bar;
-import br.com.pedroenju.Principal;
-import br.com.thiagohc.MeuCrud;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
@@ -33,12 +33,9 @@ public class Sample {
                             "jdbc:mysql://localhost:3306/singleton",
                             config
                     );
-            CrudInterface crud = new MeuCrud(conn);
-            crud.retriveAll();
+            CrudInterface crud = new MyCrud(conn);
             crud.insert();
-            crud.retriveAll();
             crud.update();
-            crud.retriveAll();
             crud.delete();
             crud.retriveAll();
         } catch (Exception e) {
@@ -46,5 +43,5 @@ public class Sample {
         }
 
     }
-}
 
+}
