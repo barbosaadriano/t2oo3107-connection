@@ -6,7 +6,8 @@
 package br.com.adrianob;
 
 import br.com.foo.Bar;
-import br.com.thallyscalory.MeuCrud;
+import br.com.pedroenju.Principal;
+import br.com.thiagohc.MeuCrud;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
@@ -45,5 +46,5 @@ public class Sample {
         }
 
     }
-
 }
+
