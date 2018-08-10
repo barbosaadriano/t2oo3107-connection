@@ -6,6 +6,7 @@
  */
 package br.com.adrianob;
 
+import br.com.Borges.CrudMeu;
 import br.com.alissonhs.MyCrud;
 import br.com.foo.Bar;
 import br.com.marlenis.Crud;
@@ -36,7 +37,6 @@ public class Sample {
                             config
                     );
             CrudInterface crud = new MyCrud(conn);
-
             crud.insert();
             crud.update();
             crud.delete();
